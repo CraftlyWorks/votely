@@ -12,6 +12,7 @@ dependencies {
 
 tasks {
     shadowJar {
+        archiveFileName.set("votely.jar")
         manifest {
             attributes["Main-Class"] = "com.craftlyworks.votely.VotelyApplication"
         }

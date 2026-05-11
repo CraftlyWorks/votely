@@ -47,6 +47,7 @@ public class VotelyApplication {
         server.start();
         LOG.info("Votely started on port " + port + " - publishing to channel '" + channel + "'.");
         LOG.info("v2 token: " + token);
+        Thread.currentThread().join();
     }
 
     private static KeyPair loadOrGenerateKeys(File rsaDir) throws Exception {

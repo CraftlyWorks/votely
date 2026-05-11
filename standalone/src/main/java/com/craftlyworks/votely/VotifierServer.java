@@ -132,7 +132,6 @@ public class VotifierServer {
         }
 
         Vote vote = new Vote("", parts[1], parts[2], parts[3], parts[4]);
-        LOG.info("[VotifierServer] v1 vote received: " + vote.username() + " via " + vote.serviceName());
         voteConsumer.accept(vote);
     }
 
@@ -179,7 +178,6 @@ public class VotifierServer {
         String timestamp = String.valueOf(payload.get("timestamp").getAsLong());
 
         Vote vote = new Vote("", serviceName, username, address, timestamp);
-        LOG.info("[VotifierServer] v2 vote received: " + vote.username() + " via " + vote.serviceName());
         voteConsumer.accept(vote);
     }
 

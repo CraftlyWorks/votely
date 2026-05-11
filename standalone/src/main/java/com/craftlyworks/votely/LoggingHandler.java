@@ -28,8 +28,14 @@ public class LoggingHandler {
         fileHandler.setFormatter(formatter);
         fileHandler.setLevel(Level.ALL);
 
-        ConsoleHandler consoleHandler = new ConsoleHandler();
-        consoleHandler.setFormatter(formatter);
+        // ConsoleHandler defaults to System.err; use a StreamHandler on System.out instead
+        StreamHandler consoleHandler = new StreamHandler(System.out, formatter) {
+            @Override
+            public synchronized void publish(LogRecord record) {
+                super.publish(record);
+                flush();
+            }
+        };
         consoleHandler.setLevel(Level.ALL);
 
         Logger root = Logger.getLogger("");

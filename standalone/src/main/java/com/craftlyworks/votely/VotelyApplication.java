@@ -33,7 +33,11 @@ public class VotelyApplication {
         VotifierServer server = new VotifierServer("0.0.0.0", port, keyPair.getPrivate(), token, vote -> {
             Vote identified = new Vote(UUID.randomUUID().toString(), vote.serviceName(), vote.username(), vote.address(), vote.timestamp());
             Redis.INSTANCE.publishGlobal(channel, identified.serialize());
-            LOG.info("Vote published: " + identified.username() + " via " + identified.serviceName() + " [" + identified.id() + "]");
+            LOG.info("Vote received from " + identified.username()
+                + " via " + identified.serviceName()
+                + " (address=" + identified.address()
+                + ", timestamp=" + identified.timestamp()
+                + ", id=" + identified.id() + ")");
         });
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             server.shutdown();

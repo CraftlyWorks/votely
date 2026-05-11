@@ -1,0 +1,11 @@
+local:
+  environment: false
+redis:
+  host: localhost
+  port: 6379
+  prefix: ""
+votifier:
+  port: 8192
+  key-dir: "./rsa"
+votes:
+  channel: "votely:votes:incoming"

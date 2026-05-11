@@ -38,7 +38,11 @@ public class LoggingHandler {
         }
         root.addHandler(fileHandler);
         root.addHandler(consoleHandler);
-        root.setLevel(Level.ALL);
+        root.setLevel(Level.INFO);
+
+        // Silence verbose internals from Lettuce and the relocated Netty bundle
+        Logger.getLogger("io.lettuce").setLevel(Level.WARNING);
+        Logger.getLogger("com.craftlyworks.votely.internal").setLevel(Level.WARNING);
     }
 
     private static void archive(File latest, File logsDir) throws IOException {

@@ -10,5 +10,6 @@ public class VotelyConfig {
     public static final ConfigRegistry CONFIG = new ConfigRegistry();
     public static final ConfigKey<Integer> VOTIFIER_PORT = CONFIG.add("votifier.port", DEFAULT_PORT, Integer.class);
     public static final ConfigKey<String> KEY_DIR = CONFIG.add("votifier.key-dir", DEFAULT_KEY_DIR, String.class);
+    public static final ConfigKey<String> VOTIFIER_TOKEN = CONFIG.add("votifier.token", "", String.class);
     public static final ConfigKey<String> VOTE_CHANNEL = CONFIG.add("votes.channel", VotelyChannel.VOTES, String.class);
 }

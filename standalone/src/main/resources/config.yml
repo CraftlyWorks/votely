@@ -7,5 +7,6 @@ redis:
 votifier:
   port: 8192
   key-dir: "./rsa"
+  token: ""
 votes:
   channel: "votely:votes:incoming"

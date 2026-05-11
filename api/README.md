@@ -5,8 +5,27 @@ dependency in your plugin — it has no heavy runtime deps.
 
 ## Dependency
 
+**Gradle (Kotlin DSL)**
+
 ```kotlin
-implementation("com.craftlyworks.votely:api:1.0-RELEASE")
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation("com.craftlyworks.votely:votely-api:1.0-RELEASE")
+}
+```
+
+**Maven**
+
+```xml
+
+<dependency>
+    <groupId>com.craftlyworks.votely</groupId>
+    <artifactId>votely-api</artifactId>
+    <version>1.0-RELEASE</version>
+</dependency>
 ```
 
 ## Usage
@@ -16,13 +35,20 @@ Subscribe to `VotelyChannel.VOTES` on your Redis connection and deserialize the 
 ```java
 redis.subscribe(VotelyChannel.VOTES, message ->{
 Vote vote = Vote.deserialize(message);
-    System.out.
 
-println(vote.getUsername() +" voted via "+vote.
-
-getServiceName());
+rewardPlayer(vote.username());
     });
 ```
+
+## Vote fields
+
+| Field         | Type     | Description                                      |
+|---------------|----------|--------------------------------------------------|
+| `id`          | `String` | Unique UUID assigned by Votely on receipt        |
+| `serviceName` | `String` | Voting site name (e.g. `"MinecraftServers.org"`) |
+| `username`    | `String` | Minecraft username of the player who voted       |
+| `address`     | `String` | IP address of the voting site                    |
+| `timestamp`   | `String` | Timestamp provided by the voting site            |
 
 ## Message format
 

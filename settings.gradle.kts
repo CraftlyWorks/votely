@@ -1,3 +1,6 @@
+plugins {
+    id("com.gradleup.nmcp.settings").version("1.4.3")
+}
 rootProject.name = "votely"
 include("api")
 include("standalone")

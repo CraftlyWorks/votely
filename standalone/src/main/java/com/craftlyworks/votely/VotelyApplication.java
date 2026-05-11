@@ -18,6 +18,8 @@ public class VotelyApplication {
     private static final Logger LOG = Logger.getLogger("Votely");
 
     public static void main(String[] args) throws Exception {
+        LoggingHandler.init();
+
         File configFile = new File("config.yml");
         writeDefaultConfig(configFile);
 
